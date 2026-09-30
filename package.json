@@ -2,7 +2,7 @@
   "name": "@aws-rex/marketing-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Static marketing site pod; consumes shared components and proves workspace inter-dependency.",
+  "description": "Static marketing site source repo; consumes shared components and proves workspace inter-dependency.",
   "type": "module",
   "main": "./src/index.js",
   "scripts": {

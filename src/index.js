@@ -1,7 +1,7 @@
 /**
  * Marketing site entry point.
  *
- * Placeholder until the static build pipeline lands. The pod already depends on
+ * Placeholder until the static build pipeline lands. The source repo already depends on
  * `@aws-rex/common-components`; wiring the shared `Header`/`Footer` into the
  * rendered pages is tracked in the workspace roadmap.
  */

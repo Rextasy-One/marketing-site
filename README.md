@@ -1,7 +1,7 @@
 # @aws-rex/marketing-site
 
 The Aws Rex marketing site. Intended as a static site that consumes
-`@aws-rex/common-components`, exercising cross-pod inter-dependency from a non-Next frontend.
+`@aws-rex/common-components`, exercising cross-repo inter-dependency from a non-Next frontend.
 
 - **Repo:** `Rextasy-One/marketing-site`
 - **Stack:** static site (pipeline TBD)
