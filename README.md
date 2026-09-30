@@ -19,6 +19,11 @@ pnpm lint
 pnpm format
 ```
 
+## Tooling
+
+ESLint and Prettier config come from
+[`@aws-rex/config`](https://github.com/Rextasy-One/config) as a versioned dependency (`^1.0.0`).
+
 ## Roadmap
 
 Adopt a static build (Vite or Next static export) that renders the shared `Header`/`Footer`, proving
