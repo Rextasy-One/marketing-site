@@ -1,3 +1,3 @@
-import { baseConfig } from '@aws-rex/config/eslint';
+import { nextConfig } from '@aws-rex/config/eslint/next';
 
-export default baseConfig({ browser: true });
+export default nextConfig();
