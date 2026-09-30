@@ -10,11 +10,13 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
+  "prettier": "@aws-rex/config/prettier",
   "dependencies": {
-    "@aws-rex/common-components": "workspace:*"
+    "@aws-rex/common-components": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "catalog:",
-    "prettier": "catalog:"
+    "@aws-rex/config": "^1.0.0",
+    "eslint": "^9.39.5",
+    "prettier": "^3.9.9"
   }
 }
