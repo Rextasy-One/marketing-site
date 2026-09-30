@@ -1,10 +1,20 @@
 {
   "name": "@aws-rex/marketing-site",
   "version": "1.0.0",
-  "private": false,
-  "main": "./index.js",
+  "private": true,
+  "description": "Static marketing site pod; consumes shared components and proves workspace inter-dependency.",
   "type": "module",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
   "dependencies": {
     "@aws-rex/common-components": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "catalog:",
+    "prettier": "catalog:"
   }
 }
