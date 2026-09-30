@@ -9,10 +9,25 @@ source repo and renders the shared `Header`/`Footer` from `@aws-rex/common-compo
 
 ## Pages
 
-| Route     | Purpose                                   |
-| --------- | ----------------------------------------- |
-| `/`       | Workspace splash / marketing landing page |
-| `/resume` | Resume page (stub — fill in real content) |
+| Route        | Purpose                                              |
+| ------------ | ---------------------------------------------------- |
+| `/`          | Workspace splash / marketing landing page            |
+| `/resume`    | Resume page (stub — fill in real content)            |
+| `/dashboard` | **Proxied** to the dashboard source repo (see below) |
+
+## Proxying the dashboard
+
+`next.config.ts` rewrites `/dashboard` (and any subpath) to `DASHBOARD_ORIGIN`, which defaults to
+`http://localhost:3001`. This is why the shared header's `Dashboard` link is the relative
+`/dashboard`: the browser only ever talks to the marketing origin, and no consumer needs to know
+which port the dashboard runs on. Override with `DASHBOARD_ORIGIN` for other environments.
+
+```bash
+DASHBOARD_ORIGIN=https://dashboard.example.com pnpm dev
+```
+
+Both apps must be running for the proxy to resolve: `pnpm dev:dashboard` (3001) and
+`pnpm dev:marketing` (3000).
 
 `Dashboard` in the shared header links to `/dashboard`, which is not served by this app (it lives
 in the `dashboard` source repo). Point that route at the dashboard deployment when there is one.
@@ -20,11 +35,11 @@ in the `dashboard` source repo). Point that route at the dashboard deployment wh
 ## Develop
 
 ```bash
-pnpm dev          # from here      → http://localhost:3001
+pnpm dev          # from here      → http://localhost:3000
 pnpm dev:marketing  # from the workspace root
 ```
 
-> Uses port `3001` so it can run alongside the dashboard (`3000`).
+> Runs on port `3000`. The dashboard runs on `3001` and this app proxies `/dashboard` to it.
 
 ## Scripts
 
