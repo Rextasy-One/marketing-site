@@ -18,6 +18,14 @@ const workspaceRoot = path.resolve(import.meta.dirname, '../..');
  */
 const dashboardOrigin = process.env.DASHBOARD_ORIGIN ?? 'http://localhost:3001';
 
+/**
+ * The dashboard is mounted at this prefix, so the whole site lives on one origin
+ * with no CORS. Registered in one place because Next refuses a `basePath` that
+ * contains another one; if routing ever gets deeper, drop `basePath` and let this
+ * proxy own the whole prefix.
+ */
+export const DASHBOARD_PREFIX = '/dashboard';
+
 const nextConfig: NextConfig = {
   // Compile the shared workspace library from source (no separate build step).
   transpilePackages: ['@aws-rex/common-components'],
@@ -25,19 +33,19 @@ const nextConfig: NextConfig = {
     root: workspaceRoot,
   },
   /**
-   * The shared header links to the relative `/dashboard`, so the marketing app
-   * must answer that path. Keep it portable: the browser only ever talks to this
-   * origin.
+   * `next.config.ts` cannot import a variable from another module into this
+   * object literal reliably across builds, so the prefix is inlined above and
+   * used directly here.
    */
   async rewrites() {
     return [
       {
-        source: '/dashboard',
-        destination: `${dashboardOrigin}/dashboard`,
+        source: `${DASHBOARD_PREFIX}`,
+        destination: `${dashboardOrigin}${DASHBOARD_PREFIX}`,
       },
       {
-        source: '/dashboard/:path*',
-        destination: `${dashboardOrigin}/dashboard/:path*`,
+        source: `${DASHBOARD_PREFIX}/:path*`,
+        destination: `${dashboardOrigin}${DASHBOARD_PREFIX}/:path*`,
       },
     ];
   },

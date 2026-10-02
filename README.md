@@ -29,8 +29,8 @@ DASHBOARD_ORIGIN=https://dashboard.example.com pnpm dev
 Both apps must be running for the proxy to resolve: `pnpm dev:dashboard` (3001) and
 `pnpm dev:marketing` (3000).
 
-`Dashboard` in the shared header links to `/dashboard`, which is not served by this app (it lives
-in the `dashboard` source repo). Point that route at the dashboard deployment when there is one.
+`Dashboard` in the shared header links to `/dashboard`, which the marketing app proxies to the
+dashboard source repo (see above), so the link resolves on the same origin.
 
 ## Develop
 
