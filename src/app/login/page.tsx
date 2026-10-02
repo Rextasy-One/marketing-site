@@ -87,7 +87,8 @@ export default function LoginPage() {
       </ul>
 
       <p className="text-xs text-slate-500">
-        Provider setup is documented in <code>docs/DEV-ENVIRONMENT.md</code>.
+        Provider setup steps are in <code>TODO.md</code>; architecture is in{' '}
+        <code>docs/DEV-ENVIRONMENT.md</code>.
       </p>
     </section>
   );
